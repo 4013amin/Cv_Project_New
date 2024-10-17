@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Src/output.css' %}">
+    <link rel="icon" href="{% static 'Pic/Logo/Asset13.png' %}" type="Image/svg">
+    <title>{% block title %}CodePlus{% endblock %}</title>
+
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="{% block description %}Default description{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}Default keywords{% endblock %}">
+    <meta name="author" content="{% block author %}Default author{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Default OG Title{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Default OG Description{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'Pic/آبی افقی.svg' %}{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}https://codeplusunity.ir/{% endblock %}">
+    <!-- Instagram as a part of Open Graph or other meta tags -->
+    <meta property="og:site_name" content="CodePlus">
+    <meta property="og:profile:url" content="https://www.instagram.com/codeplus.unity?igsh=ZTJtajhsOWxncTR6">
+
+    {% block extra_head %}
+    {% endblock %}
+</head>
+<body class="font-IRSans-Medium bg-zinc-100">
+<svg class="hidden">
+    <symbol
+            id="x-mark"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+    </symbol>
+    <!-- Plus -->
+    <symbol id="plus" fill="#04A5E5" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 45.402 45.402" xml:space="preserve">
+        <g>
+            <path d="M41.267,18.557H26.832V4.134C26.832,1.851,24.99,0,22.707,0c-2.283,0-4.124,1.851-4.124,4.135v14.432H4.141
+                c-2.283,0-4.139,1.851-4.138,4.135c-0.001,1.141,0.46,2.187,1.207,2.934c0.748,0.749,1.78,1.222,2.92,1.222h14.453V41.27
+                c0,1.142,0.453,2.176,1.201,2.922c0.748,0.748,1.777,1.211,2.919,1.211c2.282,0,4.129-1.851,4.129-4.133V26.857h14.435
+                c2.283,0,4.134-1.867,4.133-4.15C45.399,20.425,43.548,18.557,41.267,18.557z"/>
+        </g>
+    </symbol>
+
+</svg>
+
+<header class="hidden lg:flex right-0 left-0 top-3 mx-auto justify-around items-center w-[90%] h-24">
+    <div class="flex w-full justify-between items-center z-50">
+        <nav class="flex gap-x-48">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'Pic/آبی افقی.svg' %}" alt="logo" class="h-[49px] w-[230px]">
+            </a>
+
+            <ul class="flex font-IRSans-Bold gap-x-10 items-center navbar-nav">
+                <li class="hover:text-BlueC-800 hover:animate-menu hover:duration-75 hover:text-lg nav-link"><a
+                        href="{% url 'index' %}">صفحه اصلی</a></li>
+                <li class="hover:text-BlueC-800 hover:animate-menu hover:duration-75 hover:text-lg nav-link"><a
+                        href="{% url 'Portfolio' %}">نمونه کار</a></li>
+                <li class="hover:text-BlueC-800 hover:animate-menu hover:duration-75 hover:text-lg nav-link"><a
+                        href="{% url 'weblogs' %}">مقالات</a></li>
+                <li class="hover:text-BlueC-800 hover:animate-menu hover:duration-75 hover:text-lg nav-link"><a
+                        href="{% url 'contactUs' %}">تماس باما</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div>
+        <button class="flex justify-center gap-1 items-center
+            {% if request.resolver_match.url_name == 'index' %}
+                bg-white text-gray-900
+            {% else %}
+                bg-BlueC-800 text-white  <!-- تغییر رنگ متن به مشکی -->
+            {% endif %}
+            w-36 h-9 font-IRSans-Medium text-sm rounded-xl">
+
+            <!-- Icon for the index page -->
+            {% if request.resolver_match.url_name == 'index' %}
+                <img src="{% static 'Pic/call-calling.png' %}" alt="Call Icon for Index Page">
+            {% else %}
+                <!-- Icon for other pages -->
+                <img src="{% static 'Pic/call-callingwi.svg' %}" alt="Call Icon for Other Pages" class="text-white">
+            {% endif %}
+
+            <a href="{% url 'contactUs' %}" class="hover:transition-all delay-75 hover:scale-95 duration-150">
+                ثبت سفارش
+            </a>
+        </button>
+
+
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="flex lg:hidden justify-between items-center bg-white p-3 my-3">
+    <!-- menu -->
+    <div class="nav-icon cursor-pointer">
+        <img src="{% static 'Pic/menu1.svg' %}" alt="">
+    </div>
+
+    <!-- NavBar -->
+    <div class="menuNav flex flex-col fixed w-64 -right-64 top-0 bottom-0 px-6 transition-all bg-white z-20 overflow-y-auto">
+        <!-- close -->
+        <div class="flex justify-end py-4">
+            <svg class="close-nav w-6 h-6 cursor-pointer">
+                <use href="#x-mark"></use>
+            </svg>
+        </div>
+
+        <!-- nav -->
+        <ul class="flex flex-col gap-y-3 navbar-nav">
+            <li><a href="{% url 'index' %}">صفحه اصلی</a></li>
+            <li><a href="{% url 'Portfolio' %}">نمونه کار</a></li>
+            <li><a href="{% url 'weblogs' %}">مقالات</a></li>
+            <li><a href="{% url 'contactUs' %}">تماس باما</a></li>
+        </ul>
+    </div>
+
+
+    <!-- mobile logo -->
+    <a href="{% url 'index' %}">
+        <img src="{% static 'Pic/آبی افقی.svg' %}" alt="CodePlus" class="w-[115px] h-[24px]">
+    </a>
+
+    <!-- Call -->
+    <a href="{% url 'contactUs' %}" class="cursor-pointer">
+        <img src="{% static 'Pic/iconsfooter/call-calling.svg' %}" alt="">
+    </a>
+
+    <!--    <img src="{% static 'Pic/header.png' %}" class="absolute left-0 top-0 -z-10 " alt="">-->
+</div>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<script src="{% static 'Script/filter.js' %}"></script>
+
+
+</body>
+</html>
+
+

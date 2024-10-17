@@ -1,0 +1,298 @@
+<!-- index.html -->
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}تماس با ما | شرکت,CodePlus{% endblock %}
+{% block description %}صفحه تماس با ما برای شرکت CodePlus. با استفاده از این فرم می‌توانید با تیم ما تماس بگیرید، سوالات
+    خود را بپرسید و بازخورد خود را ارائه دهید. ما در اسرع وقت به شما پاسخ خواهیم داد.{% endblock %}
+{% block keywords %}تماس با ما, فرم تماس, شرکت CodePlus, پشتیبانی مشتری{% endblock %}
+{% block author %}CodePlus Team{% endblock %}
+{% block og_title %}تماس با ما | CodePlus{% endblock %}
+{% block og_description %}برای تماس با تیم CodePlus و ارسال پیام، لطفاً از فرم تماس با ما استفاده کنید. ما مشتاقانهمنتظر
+    دریافت پیام‌های شما هستیم و به زودی پاسخ خواهیم داد.{% endblock %}
+
+
+{% block content %}
+    <main>
+        <section class="container mb-56 mt-0">
+            <div class="my-16">
+                <h3 class="font-Rokh-Bold text-2xl md:text-3xl mb-4">تماس <span class="font-Rokh-Med">باما</span></h3>
+                <span class="font-IRSans-Light text-xs md:text-base">برای ثبت سفارش خود فرم زیر را پر کنید </span>
+            </div>
+
+            <!-- form -->
+            <div class="flex md:flex-row flex-col-reverse md:h-full h-auto bg-white md:justify-between justify-center items-center shadow-md rounded-3xl">
+                <div class="flex flex-col items-center justify-center h-full md:w-[50%] w-full">
+                    <div class="w-full p-5 md:pr-8 h-full">
+                        <form id="myForm" method="post" class="flex flex-col gap-x-1 md:gap-y-12 gap-y-5 md:mb-10 mb-5">
+                            {% csrf_token %}
+                            <div class="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-2 md:gap-5 gap-x-3">
+                                <div class="flex flex-col justify-center items-start text-xs w-full">
+                                    <span class="text-gray-600">نام: <span class="text-red-700">*</span></span>
+                                    <div class="flex flex-col items-center justify-center relative w-[100%]">
+                                        <img src="{% static 'Pic/fram.svg' %}" alt=""
+                                             class="w-6 h-6 absolute right-0 mx-2">
+                                        <input type="text" placeholder="نام" name="name" id="name"
+                                               class="text-gray-500 border-2 border-gray-300 rounded-sm my-1 focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-BlueC-800 transition ease-in-out duration-150 py-2 pr-9 pl-2 md:w-[250px] w-full">
+                                        <div class="text-red-600 mt-1 hidden error-message">این فیلد نباید خالی باشد.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col justify-center items-start text-xs w-full">
+                                    <span class="text-gray-600">نام خانوادگی: <span class="text-red-700">*</span></span>
+                                    <div class="flex flex-col items-center justify-center relative w-[100%]">
+                                        <img src="{% static 'Pic/fram.svg' %}" alt=""
+                                             class="w-6 h-6 absolute right-0 mx-2">
+                                        <input type="text" placeholder="نام خانوادگی" name="lastname" id="lastname"
+                                               class="text-gray-500 border-2 border-gray-300 rounded-sm my-1 focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-BlueC-800 transition ease-in-out duration-150 py-2 pr-9 pl-2 md:w-[250px] w-full">
+                                        <div class="text-red-600 mt-1 hidden error-message">این فیلد نباید خالی باشد.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid lg:grid-cols-2 md:gap-5 gap-3">
+                                <div class="flex flex-col justify-center items-start text-xs">
+                                    <span class="text-gray-600">موبایل: <span class="text-red-700">*</span></span>
+                                    <div class="flex flex-col items-center justify-center relative w-[100%]">
+                                        <input type="text" placeholder="09122502525" name="phone"
+                                               class="text-gray-500 border-2 border-gray-300 rounded-sm my-1 focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-BlueC-800 transition ease-in-out duration-150 py-2 pl-9 pr-2 md:w-[250px] w-[100%]">
+                                        <img src="{% static 'Pic/calling.png' %}" alt=""
+                                             class="w-6 h-6 absolute left-0 mx-2">
+                                        <div class="text-red-600 mt-1 hidden error-message">این فیلد نباید خالی باشد.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col justify-center items-start text-xs w-full">
+                                    <span class="text-gray-600">ایمیل: <span class="text-red-700">*</span></span>
+                                    <div class="flex flex-col items-center justify-center relative w-[100%]">
+                                        <input type="email" placeholder="email@gmail.com" name="email"
+                                               class="text-gray-500 border-2 border-gray-300 rounded-sm my-1 focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-BlueC-800 transition ease-in-out duration-150 py-2 pl-9 pr-2 md:w-[250px] w-[100%]">
+                                        <img src="{% static 'Pic/sms.png' %}" alt=""
+                                             class="w-6 h-6 absolute left-0 mx-2">
+                                        <div class="text-red-600 mt-1 hidden error-message">این فیلد نباید خالی باشد.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-xs">
+                                <span class="text-gray-600">پیام:</span>
+                                <div class="flex flex-col items-center justify-center relative w-[100%]">
+                                <textarea name="message"
+                                          class="text-gray-500 mt-4 border-2 border-gray-300 focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-BlueC-800 transition ease-in-out duration-150 p-2 lg:h-[244px] h-[140px] w-full lg:w-[520px] rounded-sm"
+                                          placeholder="پیام خود را بنویسید..."></textarea>
+                                    <div class="text-red-600 mt-1 hidden error-message">این فیلد نباید خالی باشد.</div>
+                                </div>
+                            </div>
+
+                            <div class="flex lg:justify-start justify-center items-center mt-3">
+                                <button type="submit"
+                                        class="bg-BlueC-800 text-xs rounded-2xl h-[56px] w-[186px] text-white">ارسال
+                                    پیام
+                                </button>
+                            </div>
+
+                            {% if success %}
+                                <p class="text-green-500">پیام شما با موفقیت ارسال شد با شما تماس گرفته خواهد شد!</p>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+
+                <div class="w-auto h-full hidden md:flex">
+                    <img src="{% static 'Pic/Contactus.png' %}" alt="">
+                </div>
+
+                <!-- Mobile -->
+                <div class="h-full flex md:hidden w-[100%] p-4 mb-10">
+                    <img src="{% static 'Pic/ContactuMpbile.png' %}" alt="" class="w-[100%]">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function (event) {
+            let isValid = true;
+            const fields = document.querySelectorAll('#myForm input[type="text"], #myForm input[type="email"], #myForm textarea');
+
+            fields.forEach(function (field) {
+                const errorMessage = field.parentElement.querySelector('.error-message');
+                if (field.value.trim() === '') {
+                    isValid = false;
+                    field.classList.add('border-red-500');
+                    errorMessage.classList.remove('hidden');
+                } else {
+                    field.classList.remove('border-red-500');
+                    errorMessage.classList.add('hidden');
+                }
+            });
+
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+
+
+    <!--                    <form action="#" method="post" id="form">-->
+    <!--                        &lt;!&ndash; Add your access_key here &ndash;&gt;-->
+
+    <!--                        <div class="flex flex-col gap-x-1 md:gap-y-12 gap-y-5 md:mb-10 mb-5">-->
+    <!--                            <div class="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-2 md:gap-5 gap-x-3">-->
+    <!--                                <div>-->
+    <!--                                    <label class="text-gray-600 mr-1">نام: <span class="text-red-700">*</span></label>-->
+    <!--                                    <div class="relative w-[100%] mt-2">-->
+    <!--                                        <img src="{% static 'Pic/fram.svg' %}" alt=""-->
+    <!--                                             class="w-6 h-6 absolute right-0 m-2">-->
+    <!--                                        <input-->
+    <!--                                                type="text"-->
+    <!--                                                name="name"-->
+    <!--                                                required-->
+    <!--                                                class="peer border-2 text-sm border-muted-medium py-2 rounded-lg placeholder:text-default focus:border-primary focus:ring-1 focus:ring-primary outline-none w-full [.validated_&]:invalid:border-red-700 [.validated_&]:invalid:ring-1 [.validated_&]:invalid:ring-red-200 pr-9 pl-3 md:w-[250px]"-->
+    <!--                                                placeholder="نام"/>-->
+    <!--                                        <p class="mt-2 hidden [.validated_&]:peer-invalid:block text-red-700 text-[10px]">-->
+    <!--                                            لطفا نام خود را وارد کنید.-->
+    <!--                                        </p>-->
+    <!--                                        <div class="flex [.validated_&]:peer-invalid:hidden items-center gap-1 relative group mr-1">-->
+    <!--                                            <img src="{% static 'Pic/info.png' %}" alt="">-->
+    <!--                                            <span class="text-[10px] text-gray-500">پیغام راهنما</span>-->
+    <!--                                            <div class="text-xs text-gray-500 opacity-0 group-hover:opacity-100 duration-300 bg-white mb-3 p-5 absolute inset-x-0 bottom-0 w-[50px] flex justify-center items-end bg-gray-200font-semibold border-BlueC-800 border-2 rounded-lg">-->
+    <!--                                                راهنمایی...!-->
+    <!--                                            </div>-->
+    <!--                                        </div>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                                <div>-->
+    <!--                                    <label class="text-gray-600 mr-1">نام خانوادگی: <span class="text-red-700">*</span></label>-->
+    <!--                                    <div class="relative w-[100%] mt-2">-->
+    <!--                                        <img src="{% static 'Pic/fram.svg' %}" alt=""-->
+    <!--                                             class="w-6 h-6 absolute right-0 m-2">-->
+    <!--                                        <input-->
+    <!--                                                type="text"-->
+    <!--                                                name="lastname"-->
+    <!--                                                required-->
+    <!--                                                class="peer border-2 text-sm border-muted-medium py-2 rounded-lg placeholder:text-default focus:border-primary focus:ring-1 focus:ring-primary outline-none w-full [.validated_&]:invalid:border-red-700 [.validated_&]:invalid:ring-1 [.validated_&]:invalid:ring-red-200 pr-9 pl-3 md:w-[250px]"-->
+    <!--                                                placeholder="نام خانوادگی"/>-->
+    <!--                                        <p class="mt-2 hidden [.validated_&]:peer-invalid:block text-red-700 text-[10px]">-->
+    <!--                                            لطفا نام خانوادگی خود را وارد کنید.-->
+    <!--                                        </p>-->
+    <!--                                        <div class="flex [.validated_&]:peer-invalid:hidden items-center gap-1 relative group mr-1">-->
+    <!--                                            <img src="{% static 'Pic/info.png' %}" alt="">-->
+    <!--                                            <span class="text-[10px] text-gray-500">پیغام راهنما</span>-->
+    <!--                                            <div class="text-xs text-gray-500 opacity-0 group-hover:opacity-100 duration-300 bg-white mb-3 p-5 absolute inset-x-0 bottom-0 w-[70px]  flex justify-center items-end bg-gray-200font-semibold border-BlueC-800 border-2 rounded-lg">-->
+    <!--                                                راهنمایی...!-->
+    <!--                                            </div>-->
+    <!--                                        </div>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+
+    <!--                            &lt;!&ndash; ******** &ndash;&gt;-->
+    <!--                            <div class="grid lg:grid-cols-2 md:gap-5 gap-3">-->
+    <!--                                <div>-->
+    <!--                                    <label class="text-gray-600">موبایل : <span class="text-red-700">*</span></label>-->
+    <!--                                    <div class="relative w-[100%] mt-2">-->
+    <!--                                        <input-->
+    <!--                                                type="text"-->
+    <!--                                                name="phone"-->
+    <!--                                                required-->
+    <!--                                                class="peer border-2 border-muted-medium rounded-lg placeholder:text-default focus:border-primary focus:ring-1 focus:ring-primary outline-none [.validated_&]:invalid:border-red-700 [.validated_&]:invalid:ring-1 [.validated_&]:invalid:ring-red-200 py-2 pl-9 pr-2 md:w-[250px] w-[100%]"-->
+    <!--                                                placeholder="09122502525"-->
+    <!--                                        />-->
+    <!--                                        <img src="{% static 'Pic/calling.png' %}" alt=""-->
+    <!--                                             class="w-6 h-6 absolute left-0 top-0 m-2">-->
+    <!--                                        <p class="mt-2 hidden [.validated_&]:peer-invalid:block text-red-700 text-[10px]">-->
+    <!--                                            لطفا موبایل خود را وارد کنید.-->
+    <!--                                        </p>-->
+    <!--                                        <div class="flex [.validated_&]:peer-invalid:hidden items-center gap-1 relative group mr-1">-->
+    <!--                                            <img src="{% static 'Pic/info.png' %}" alt="">-->
+    <!--                                            <span class="text-[10px] text-gray-500">پیغام راهنما</span>-->
+    <!--                                            <div class="text-xs text-gray-500 opacity-0 group-hover:opacity-100 duration-300 bg-white mb-3 p-5 absolute inset-x-0 bottom-0 w-[70px] flex justify-center items-end bg-gray-200font-semibold border-BlueC-800 border-2 rounded-lg">-->
+    <!--                                                راهنمایی...!-->
+    <!--                                            </div>-->
+    <!--                                        </div>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                                <div>-->
+    <!--                                    <label class="text-gray-600">ایمیل : <span class="text-red-700">*</span></label>-->
+    <!--                                    <div class="relative w-[100%] mt-2">-->
+    <!--                                        <input-->
+    <!--                                                type="email"-->
+    <!--                                                name="email"-->
+    <!--                                                required-->
+    <!--                                                class="peer border-2 border-muted-medium rounded-lg placeholder:text-default focus:border-primary focus:ring-1 focus:ring-primary outline-none [.validated_&]:invalid:border-red-700 [.validated_&]:invalid:ring-1 [.validated_&]:invalid:ring-red-200 py-2 pl-9 pr-2 md:w-[250px] w-[100%]"-->
+    <!--                                                placeholder="email@gmail.com*"-->
+    <!--                                        />-->
+    <!--                                        <img src="{% static 'Pic/sms.png' %}" alt=""-->
+    <!--                                             class="w-6 h-6 absolute left-0 top-0 m-2">-->
+    <!--                                        <p class="mt-2 hidden [.validated_&]:peer-invalid:block text-red-700 text-[10px]">-->
+    <!--                                            لطفا ایمیل خود را وارد کنید.-->
+    <!--                                        </p>-->
+    <!--                                        <div class="flex [.validated_&]:peer-invalid:hidden items-center gap-1 relative group mr-1">-->
+    <!--                                            <img src="{% static 'Pic/info.png' %}" alt="">-->
+    <!--                                            <span class="text-[10px] text-gray-500">پیغام راهنما</span>-->
+    <!--                                            <div class="text-xs text-gray-500 opacity-0 group-hover:opacity-100 duration-300 bg-white mb-3 p-5 absolute inset-x-0 bottom-0 w-[70px] flex justify-center items-end bg-gray-200font-semibold border-BlueC-800 border-2 rounded-lg">-->
+    <!--                                                راهنمایی...!-->
+    <!--                                            </div>-->
+    <!--                                        </div>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+
+    <!--                            <div class="md:col-span-2">-->
+    <!--                                <label class="text-gray-600">پیام :</label>-->
+    <!--                                <div>-->
+    <!--                                <textarea-->
+    <!--                                        name="message"-->
+    <!--                                        required-->
+    <!--                                        class="peer border-2 border-muted-medium rounded-lg placeholder:text-default focus:border-primary focus:ring-1 focus:ring-primary outline-none w-full h-40 p-2"-->
+    <!--                                        placeholder="پیام خود را بنویسید..."></textarea>-->
+
+    <!--                                </div>-->
+    <!--                            </div>-->
+
+    <!--                            <div class="md:col-span-2 text-center">-->
+    <!--                                <div class="flex lg:justify-start justify-center items-center mt-3">-->
+    <!--                                    <button-->
+    <!--                                            type="submit"-->
+    <!--                                            class="bg-BlueC-800 py-5 px-14 text-black transition hover:bg-primary-strong text-xs rounded-2xl h-[56px] w-[186px]">-->
+    <!--                                        ارسال پیام-->
+    <!--                                    </button>-->
+    <!--                                </div>-->
+    <!--                                <div id="result" class="mt-3 text-center"></div>-->
+
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </form>-->
+
+    <!--{% if success %}-->
+        <!--<p class="text-green-500">پیام شما با موفقیت ارسال شد با شما تماس گرفته خواهد شد !</p>-->
+        <!--{% endif %}-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="w-auto h-full hidden md:flex">-->
+    <!--    <img src="{% static 'Pic/Contactus.png' %}" alt="">-->
+    <!--</div>-->
+    <!--&lt;!&ndash; Mobile &ndash;&gt;-->
+    <!--<div class="h-full flex md:hidden w-[100%] p-4 mb-10">-->
+    <!--    <img src="{% static 'Pic/ContactuMpbile.png' %}" alt="" class="w-[100%]">-->
+    <!--</div>-->
+    <!--</div>-->
+
+
+    <!--</section>-->
+    <!--</main>-->
+
+    <!-- Include Footer -->
+    {% include 'baseFooter.html' %}
+
+    </body>
+    </html>
+{% endblock %}

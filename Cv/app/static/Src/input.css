@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base{
+    @font-face {
+        font-family: "Rokh Light";
+        src: url("../Font/Rokh-Light.woff2") format("woff2");
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Rokh Medium";
+        src: url("../Font/Rokh-Medium.woff2") format("woff2");
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Rokh Bold";
+        src: url("../Font/Rokh-Bold.woff2") format("woff2");
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "IRSans Light";
+        src: url("../Font/IRANSansWeb_Light.woff2") format("woff2");
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "IRSans Medium";
+        src: url("../Font/IRANSansWeb_Medium.woff2") format("woff2");
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "IRSans Bold";
+        src:  url("../Font/IRANSansWeb_Bold.woff2") format("woff2");
+        font-display: swap;
+    }
+}
