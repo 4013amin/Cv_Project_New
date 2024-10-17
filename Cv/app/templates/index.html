@@ -1,0 +1,595 @@
+<!-- index.html -->
+{% extends 'base.html' %}
+
+{% load static %}
+
+<!--Seo-->
+{% block title %}صفحه اصلی{% endblock %}
+
+{% block description %}این صفحه اصلی سایت CodePlus است که به شما اطلاعات مفیدی درباره خدمات و نمونه کارها ارائه
+    می‌دهد.{% endblock %}
+
+{% block keywords %}CodePlus, خدمات, نمونه کار, وب سایت,کد پلاس , codepluse , طراحی سایت رایگان , رایگان{% endblock %}
+
+{% block author %}CodePlus Team{% endblock %}
+
+{% block og_title %}صفحه اصلی | CodePlus{% endblock %}
+
+{% block og_description %}این صفحه اصلی سایت CodePlus است که به شما اطلاعات مفیدی درباره خدمات و نمونه کارها ارائه
+    می‌دهد.{% endblock %}
+{% block og_url %}https://codeplusunity.ir/{% endblock %}
+
+{% block content %}
+
+    <main>
+        <!-- header Image -->
+        <img src="{% static 'Pic/Frame125.png' %}"
+             class="absolute left-0 top-0 -z-10 lg:w-[650px] lg:h-[600px] md:w-[150px] md:h-[100px]" alt="">
+
+        <!-- Header Home -->
+        <section class="container relative mt-[320px] md:mt-96 lg:mt-0">
+            <!-- بخش اصلی با پترن -->
+            <div class="overflow-y-hidden md:min-h-screen lg:w-[50%] flex justify-end items-center"
+                 style="background-image: url('{% static 'Pic/headerpattern.svg' %}'); background-repeat: repeat; background-position: right top;">
+                <div class="flex flex-col gap-y-8">
+                    <div class="font-Rokh-Med text-2xl md:text-3xl">
+                        پروژه خودتو با خیال راحت </br>به <span
+                            class="bg-BlueC-800 text-white rounded-3xl px-2">کد پلاس</span> بسپار
+                    </div>
+                    <p class="font-IRSans-Light text-xs leading-5">
+                        در کد پلاس، ما به ایده‌های شما جان می‌بخشیم و آن‌ها را به تجربه‌های دیجیتالی بی‌نظیر تبدیل
+                        می‌کنیم.
+                        تیم ما، متشکل از برنامه‌نویسان، طراحان و متخصصین سئو، با دقت و خلاقیت، به طراحی سایت‌های پویا،
+                        اپلیکیشن‌های کاربرپسند، رابط‌های کاربری زیبا و استراتژی‌های سئو قوی می‌پردازد. مأموریت ما این
+                        است که
+                        با ترکیب هنر و تکنولوژی، حضوری قدرتمند برای کسب‌وکار شما در دنیای آنلاین ایجاد کنیم. به کد پلاس
+                        بپیوندید و اجازه دهید با هم، آینده‌ی دیجیتال شما را بسازیم.
+                    </p>
+                    <div class="flex items-center">
+                        <button class="flex justify-center gap-1 items-center bg-BlueC-800 text-xs rounded-xl px-6 md:px-8 py-1 md:py-2 text-white">
+                            <a href="{% url 'contactUs' %}"
+                               class="hover:transition-all delay-75 hover:scale-95 duration-150">ثبت سفارش</a>
+                        </button>
+                        <div class="flex items-center mr-2 cursor-pointer">
+                        <span><a href="{% url 'Portfolio' %}"
+                                 class="font-IRSans-Light text-xs">نمونه کارهای ما</a></span>
+                            <span class="w-9 mx-1 duration-300 delay-150 transition-all transform origin-left hover:w-14">
+                            <img src="{% static 'Pic/Union.png' %}" alt="">
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Services -->
+        <section class="mt-16 md:mt-1 lg:mt-0">
+            <!-- title -->
+            <div class="container">
+                <h3 class="font-Rokh-Bold text-2xl md:text-3xl mb-4">خدمات <span class="font-Rokh-Med">ما</span></h3>
+                <span class="font-IRSans-Light text-xs md:text-base">ما بهترین خدمات دیجیتال را برای رشد کسب‌وکار شما ارائه می‌دهیم.</span>
+            </div>
+            <div class="container flex justify-center items-center">
+
+                <!-- product -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-9 gap-5 md:gap-10">
+
+                    <div class="md:w-[356px] lg:h-[460px] h-[360px] w-[281px] bg-white rounded-md">
+                        <!-- head -->
+                        <div class="flex gap-2 items-center my-4 mx-7 right-0">
+                            <img src="{% static 'Pic/khadamat.svg' %}" class="md:w-14 w-10 h-10 md:h-14" alt="">
+                            <h4 class="md:text-base text-xs">سئو (SEO)</h4>
+                        </div>
+                        <hr class="mx-7">
+                        <!-- main -->
+                        <ul class="flex flex-col gap-1 my-6 md:text-base text-xs font-IRSans-Light text-grayPro-800">
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>سئو تکنیکال</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>آنالیز و گزارش دهی</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>تحلیل رقبا</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>ساختار :Url</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>ساخت لینک داخلی و خارجی </span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>ساخت بک لینک</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>تولید محتوای جذاب</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>مشاوره رایگان</span>
+                            </li>
+                        </ul>
+
+                        <!-- end -->
+                        <div class="flex flex-col justify-center items-center">
+                            <span class="text-greenPrice-800 font-IRSans-Bold md:text-xl text-base">8,900,000 تومان</span>
+                            <span class="flex bg-BlueC-800 rounded-xl px-6 md:px-8 py-1 md:py-2 my-3 md:text-lg text-base "><a
+                                    href="{% url 'contactUs' %}"
+                                    class="hover:transition-all delay-75 hover:scale-95 duration-150 text-white">ثبت سفارش</a></span>
+                        </div>
+                    </div>
+
+                    <div class="md:w-[356px] lg:h-[460px] h-[360px] w-[281px] bg-white rounded-md">
+                        <!-- head -->
+                        <div class="flex gap-2 items-center my-4 mx-7 right-0">
+                            <img src="{% static 'Pic/khadamat.svg' %}" class="md:w-14 w-10 h-10 md:h-14" alt="">
+                            <h4 class="md:text-base text-xs">خدمات طراحی کاربری (UI/UX)</h4>
+                        </div>
+                        <hr class="mx-7">
+                        <!-- main -->
+                        <ul class="flex flex-col gap-1 my-6 md:text-base text-xs font-IRSans-Light text-grayPro-800">
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>پیاده سازی navigation ها </span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>طراحی ui / ux بدون کد نویسی</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>طراحی مجزای نسخه موبایل و دسکتاپ</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>تحلیل نیازهای کاربران</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>تست واکنش پذیری</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span> طراحی تعامل</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>طراحی بصری</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>مشاوره رایگان </span>
+                            </li>
+                        </ul>
+
+                        <!-- end -->
+                        <div class="flex flex-col justify-center items-center">
+                            <span class="text-greenPrice-800 font-IRSans-Bold md:text-xl text-base">10,000,000 تومان</span>
+                            <span class="flex bg-BlueC-800 rounded-xl px-6 md:px-8 py-1 md:py-2 my-3 md:text-lg text-base "><a
+                                    href="{% url 'contactUs' %}"
+                                    class="hover:transition-all delay-75 hover:scale-95 duration-150 text-white">ثبت سفارش</a></span>
+                        </div>
+                    </div>
+
+                    <div class="md:w-[356px] lg:h-[460px] h-[360px] w-[281px] bg-white rounded-md">
+                        <!-- head -->
+                        <div class="flex gap-2 items-center my-4 mx-7 right-0">
+                            <img src="{% static 'Pic/khadamat.svg' %}" class="md:w-14 w-10 h-10 md:h-14" alt="">
+                            <h4 class="md:text-base text-xs">توسعه سایت فروشگاهی</h4>
+                        </div>
+                        <hr class="mx-7">
+                        <!-- main -->
+                        <ul class="flex flex-col gap-1 my-6 md:text-base text-xs font-IRSans-Light text-grayPro-800">
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>طراحی  رابط کاربری جذاب و کاربرپسند</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>ایجاد صفحات هات مورد نیاز </span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>امکان افزودن، ویرایش و حذف محصولات</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>امکان شخصی سازی صفحات </span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>قالب های کد نویسی شده منحصر به فرد</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>یکپارچهسازی با درگاههای پرداخت امن</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>هاست رایگان</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>مشاوره رایگان</span>
+                            </li>
+                        </ul>
+
+                        <!-- end -->
+                        <div class="flex flex-col justify-center items-center">
+                            <span class="text-greenPrice-800 font-IRSans-Bold md:text-xl text-base">25,000,000 تومان</span>
+                            <span class="flex bg-BlueC-800 rounded-xl px-6 md:px-8 py-1 md:py-2 my-3 md:text-lg text-base "><a
+                                    href="{% url 'contactUs' %}"
+                                    class="hover:transition-all delay-75 hover:scale-95 duration-150 text-white">ثبت سفارش</a></span>
+                        </div>
+                    </div>
+
+                    <div class="md:w-[356px] lg:h-[460px] h-[360px] w-[281px] bg-white rounded-md">
+                        <!-- head -->
+                        <div class="flex gap-2 items-center my-4 mx-7 right-0">
+                            <img src="{% static 'Pic/khadamat.svg' %}" class="md:w-14 w-10 h-10 md:h-14" alt="">
+                            <h4 class="md:text-base text-xs">طراحی و توسعه سایت شرکتی</h4>
+                        </div>
+                        <hr class="mx-7">
+                        <!-- main -->
+                        <ul class="flex flex-col gap-1 my-6 md:text-base text-xs font-IRSans-Light text-grayPro-800">
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>طراحی ظاهری مدرن با برند شرکت</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>ایجاد صفحه هات مورد نیاز مشتری</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>پیاده سازی ظاهر زیبا و بهینه </span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>کد نویسی قالب های منحصر به فرد </span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>بهینهسازی ساختار وبسایت و محتوا</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>ایجاد محتوای متنی،تصویری و ویدئویی</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>هاست رایگان</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>مشاوره رایگان</span>
+                            </li>
+                        </ul>
+
+                        <!-- end -->
+                        <div class="flex flex-col justify-center items-center">
+                            <span class="text-greenPrice-800 font-IRSans-Bold md:text-xl text-base">15,000,000 تومان</span>
+                            <span class="flex bg-BlueC-800 rounded-xl px-6 md:px-8 py-1 md:py-2 my-3 md:text-lg text-base "><a
+                                    href="{% url 'contactUs' %}"
+                                    class="hover:transition-all delay-75 hover:scale-95 duration-150 text-white">ثبت سفارش</a></span>
+                        </div>
+                    </div>
+
+                    <div class="md:w-[356px] lg:h-[460px] h-[360px] w-[281px] bg-white rounded-md">
+                        <!-- head -->
+                        <div class="flex gap-2 items-center my-4 mx-7 right-0">
+                            <img src="{% static 'Pic/khadamat.svg' %}" class="md:w-14 w-10 h-10 md:h-14" alt="">
+                            <h4 class="md:text-base text-xs">طراحی سایت وردپرس</h4>
+                        </div>
+                        <hr class="mx-7">
+                        <!-- main -->
+                        <ul class="flex flex-col gap-1 my-6 md:text-base text-xs font-IRSans-Light text-grayPro-800">
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>توسعه صفحات</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>طراحی منحصر به فرد سفارش</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>بهینه سازی ساختار</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>نتخاب و نصب پلاگین</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span> سازگاری با دستگاه ها</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span> افزایش سرعت بارگذاری </span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>گواهینامه ssl</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>مشاوره فنی رایگان</span>
+                            </li>
+                        </ul>
+
+                        <!-- end -->
+                        <div class="flex flex-col justify-center items-center">
+                            <span class="text-greenPrice-800 font-IRSans-Bold md:text-xl text-base">10,000,000 تومان</span>
+                            <span class="flex bg-BlueC-800 rounded-xl px-6 md:px-8 py-1 md:py-2 my-3 md:text-lg text-base "><a
+                                    href="{% url 'contactUs' %}"
+                                    class="hover:transition-all delay-75 hover:scale-95 duration-150 text-white">ثبت سفارش</a></span>
+                        </div>
+                    </div>
+
+                    <div class="md:w-[356px] lg:h-[460px] h-[360px] w-[281px] bg-white rounded-md">
+                        <!-- head -->
+                        <div class="flex gap-2 items-center my-4 mx-7 right-0">
+                            <img src="{% static 'Pic/khadamat.svg' %}" class="md:w-14 w-10 h-10 md:h-14" alt="">
+                            <h4 class="md:text-base text-xs">طراحی اپلیکیشن</h4>
+                        </div>
+                        <hr class="mx-7">
+                        <!-- main -->
+                        <ul class="flex flex-col gap-1 my-6 md:text-base text-xs font-IRSans-Light text-grayPro-800">
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>طراحی یک جلسه و صحبت راجب پروژه</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>پیاده سازی ui </span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>اپلیکیشن شخصی</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span> متصل به api شخصی سازی شده</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>به روز کردن مداوم اپلیکیشن</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>ایجاد پروژه های بزرگ</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>هاست رایگان</span>
+                            </li>
+                            <li class="flex justify-start items-center gap-1 mx-7">
+                                <img src="{% static 'Pic/tik.png' %}" class="w-3 h-3" alt="">
+                                <span>مشاوره رایگان</span>
+                            </li>
+                        </ul>
+
+                        <!-- end -->
+                        <div class="flex flex-col justify-center items-center">
+                            <span class="text-greenPrice-800 font-IRSans-Bold md:text-xl text-base">30,000,000 تومان</span>
+                            <span class="flex bg-BlueC-800 rounded-xl px-6 md:px-8 py-1 md:py-2 my-3 md:text-lg text-base "><a
+                                    href="{% url 'contactUs' %}"
+                                    class="hover:transition-all delay-75 hover:scale-95 duration-150 text-white">ثبت سفارش</a></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- why us -->
+        <section class="mt-16 md:mt-24"
+                 style="background-image: url('{% static 'Pic/orengebackground.svg' %}'); background-repeat: repeat ;
+                         background-position: left">
+            <div class="flex md:flex-row flex-col right-0 left-0 justify-center items-end md:items-center">
+                <div class="container">
+                    <!-- title -->
+                    <div>
+                    <span class="font-Rokh-Med md:text-3xl text-2xl">چرا <h3
+                            class="font-Rokh-Bold mb-4 inline">کدپلاس؟</h3></span>
+                        <p class="font-IRSans-Light md:my-9 my-4 md:text-base text-xs">مشاوره رایگان در انتخاب بهترین
+                            راهکارهای دیجیتال</p>
+                    </div>
+                    <!-- ----- -->
+                    <div class="grid grid-cols-2 md:gap-6 gap-3 justify-start items-center my-12">
+                        <div class="flex lg:gap-4 gap-2">
+                            <img src="{% static 'Pic/Mobile.png' %}" class="lg:w-14 lg:h-14 w-10 h-10" alt="">
+                            <div>
+                                <h4 class="font-Rokh-Bold lg:text-base text-sm">پشتیبانی ۲۴ ساعته</h4>
+                                <p class="font-Rokh-Med lg:text-sm text-xs">پشتیبانی 7 روز هفته و روزهای تعطیل</p>
+                            </div>
+                        </div>
+
+                        <div class="flex lg:gap-4 gap-2">
+                            <img src="{% static 'Pic/Contact.png' %}" class="lg:w-14 lg:h-14 w-10 h-10" alt="">
+                            <div>
+                                <h4 class="font-Rokh-Bold lg:text-base text-sm">امکان بررسی نظرات کاربران</h4>
+                                <p class="font-Rokh-Med lg:text-sm text-xs">بررسی کیفیت پروژه ها از دید کاربران</p>
+                            </div>
+                        </div>
+
+                        <div class="flex lg:gap-4 gap-2">
+                            <img src="{% static 'Pic/Contact.png' %}" class="lg:w-14 lg:h-14 w-10 h-10" alt="">
+                            <div>
+                                <h4 class="font-Rokh-Bold lg:text-base text-sm">ایجاد فضای دوستانه </h4>
+                                <p class="font-Rokh-Med lg:text-sm text-xs">برگزاری جلسات رایگان برای بهبود پروژه</p>
+                            </div>
+                        </div>
+
+                        <div class="flex lg:gap-4 gap-2">
+                            <img src="{% static 'Pic/Mobile.png' %}" class="lg:w-14 lg:h-14 w-10 h-10" alt="">
+                            <div>
+                                <h4 class="font-Rokh-Bold lg:text-base text-sm">وظیفه و وقت شناس</h4>
+                                <p class="font-Rokh-Med lg:text-sm text-xs">تلاش برای تحویل دادن سر تایم پروژه ها</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- image -->
+                <div class="-left-60 lg:w-[600px] w-[70%] h-[70%] md:mt-0 ">
+                    <img src="{% static 'Pic/whayUs.png' %}" alt="">
+                </div>
+            </div>
+        </section>
+
+        <!-- blog-->
+        <section class="mt-16 md:mt-24">
+            <div class="container">
+                <!-- title -->
+                <div class="flex justify-between items-end my-9">
+                    <div>
+                        <h3 class="font-Rokh-Bold md:text-3xl text-2xl mb-4">مقالات</h3>
+                        <span class="font-IRSans-Light lg:text-base text-xs">جدیدترین مقالات و مطالب آموزشی در حوزه دیجیتال و فناوری</span>
+                    </div>
+                    <div class="hidden lg:flex justify-center items-center gap-x-1 cursor-pointer">
+                    <span class="font-IRSans-Light text-[12px]"><a href="{% url 'weblogs' %}"
+                                                                   class="font-IRSans-Light text-xs ">همه مقالات</a></span>
+                        <span class="w-9 mx-1 duration-300 delay-150 transition-all transform origin-left hover:w-11">
+                        <img src="{% static 'Pic/Union.png' %}" alt="">
+                    </span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4 gap-2 lg:w-full w-[360px">
+                    {% for blog in latest_blogs %}
+                        <div class="flex lg:gap-5 gap-3 bg-white p-3 rounded-lg items-start lg:my-4 my-2">
+                            <img src="{{ blog.image.url }}" alt="" class="rounded-lg lg:w-32 w-[80px] h-[80px] lg:h-36">
+
+                            <div class="lg:w-[400px] w-[260px] flex flex-col justify-between gap-y-2">
+                                <div class="flex flex-col">
+                                    <h5 class="font-IRSans-Medium lg:text-base text-xs">{{ blog.title }}</h5>
+                                    <div class="flex gap-1 mt-1 mb-3 justify-start items-center">
+                                        <img src="{% static 'Pic/calendar.png' %}" alt="" class="lg:w-4 w-3 lg:h-4 h-3">
+                                        <p class="font-IRSans-Light text-zinc-400 lg:text-base text-[10px]">
+                                            {{ blog.created_at | date:"Y/M/D" }}
+                                        </p>
+
+                                    </div>
+                                    <div class="w-full h-auto font-IRSans-Light lg:text-sm text-[10px] overflow-hidden truncate line-clamp-3">
+                                        {{ blog.content|truncatechars:60 | safe }}
+                                    </div>
+
+                                    <a href="{% url 'blog_detail' blog.id %}"
+                                       class="flex justify-end lg:mt-2 mt-1  left-0">
+                                        <img src="{% static 'Pic/import.png' %}" alt="" class="lg:w-4 w-2 lg:h-4 h-2">
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p class="text-center col-span-2">No blogs available.</p>
+                    {% endfor %}
+                </div>
+
+                <div class="flex lg:hidden justify-center items-center gap-x-1 my-8">
+                    <span class="font-IRSans-Light"><a href="#">همه مقالات</a></span>
+                    <span class="w-9 mx-1"><img src="{% static 'Pic/Union.png' %}" alt=""></span>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Question -->
+        <section class="mt-24">
+            <div class="container">
+                <div class="my-9 lg:text-3xl text-2xl">
+                    <span class="font-Rokh-Med ">سوالات متداول</span>
+                    <h3 class="font-Rokh-Bold inline">کدپلاس</h3>
+                </div>
+
+                <ul class="lg:mt-6 mt-3 divide-y shadow rounded-xl grid grid-cols-1 justify-start lg:items-start items-center gap-4">
+                    <li>
+                        <details class="group flex gap-2 bg-BlueC-100/30 lg:p-5 p-5 rounded-md">
+                            <summary
+                                    class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
+                                <svg class="lg:w-5 w-4 h-4 lg:h-5 transition group-open:rotate-45">
+                                    <use href="#plus"></use>
+                                </svg>
+                                <span class="lg:text-base text-xs font-IRSans-Bold">شرکت ما چه خدماتی ارائه میدهد؟</span>
+                            </summary>
+
+                            <article class="px-4 pb-2 lg:text-sm text-[10px] font-IRSans-Light">
+                                <p>
+                                    شرکت ما خدمات متنوعی از جمله لیست خدمات را ارائه میدهد. این شامل توضیح مختصر در مورد
+                                    هر
+                                    خدمت است. برای جزئیات بیشتر، لطفاً به بخش خدمات ما مراجعه کنید.
+                                </p>
+                            </article>
+                        </details>
+                    </li>
+                </ul>
+
+                <ul class="lg:mt-6 mt-3 divide-y shadow rounded-xl grid grid-cols-1 justify-start lg:items-start items-center gap-4">
+                    <li>
+                        <details class="group flex gap-2 bg-BlueC-100/30 lg:p-5 p-5 rounded-md">
+                            <summary
+                                    class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
+                                <svg class="lg:w-5 w-4 h-4 lg:h-5 transition group-open:rotate-45">
+                                    <use href="#plus"></use>
+                                </svg>
+                                <span class="lg:text-base text-xs font-IRSans-Bold">چگونه میتوانم با ما تماس بگیرم؟</span>
+                            </summary>
+
+                            <article class="px-4 pb-2 lg:text-sm text-[10px] font-IRSans-Light">
+                                <p>
+                                    برای ارتباط گرفتن با ما میتوانید در صفحه تماس با ما فرم مربوطه رو پر کنید ما با شما
+                                    تماس
+                                    خواهیم گرفت
+                                    یا با آدرس ایمیل ما به نشانی: <span
+                                        class="text-BlueC-800">codeplus.unity@gmail.com</span> میتوانید با ما مستقیم در
+                                    ارتباط
+                                    باشید.
+                                </p>
+                            </article>
+                        </details>
+                    </li>
+
+                </ul>
+
+                <ul class="lg:mt-6 mt-3 divide-y shadow rounded-xl grid grid-cols-1 justify-start lg:items-start items-center gap-4">
+                    <li>
+                        <details class="group flex gap-2 bg-BlueC-100/30 lg:p-5 p-5 rounded-md">
+                            <summary
+                                    class="flex items-center gap-3 px-4 py-3 font-medium marker:content-none hover:cursor-pointer">
+                                <svg class="lg:w-5 w-4 h-4 lg:h-5 transition group-open:rotate-45">
+                                    <use href="#plus"></use>
+                                </svg>
+                                <span class="lg:text-base text-xs font-IRSans-Bold"> آیا میتوانم با تیم شما جلسه مشاوره رایگان داشته باشم؟</span>
+                            </summary>
+
+                            <article class="px-4 pb-2 lg:text-sm text-[10px] font-IRSans-Light">
+                                <p>
+                                    بله , شما در صورت نیاز به ما اطلاع میدید برای برگزار کردن جلسه و یا مشاوره رایگان
+                                </p>
+                            </article>
+                        </details>
+                    </li>
+
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Include Footer -->
+    {% include 'baseFooter.html' %}
+
+    </body>
+    </html>
+{% endblock %}

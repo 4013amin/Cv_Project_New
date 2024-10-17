@@ -1,0 +1,295 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{#SEO#}
+{% block title %}{{ cv.title }} | CodePlus{% endblock %}
+
+{% block description %}{{ cv.des|truncatewords:20 }}{% endblock %}
+
+{% block keywords %}{{ cv.tools }}, {{ cv.language }}, نمونه کارها, CodePlus{% endblock %}
+
+{% block author %}CodePlus Team{% endblock %}
+
+{% block og_title %}{{ cv.title }} | CodePlus{% endblock %}
+
+{% block og_description %}{{ cv.des|truncatewords:30 }}{% endblock %}
+
+{% block og_image %}{% static 'Pic/آبی افقی.svg' %}{% endblock %}
+
+{% block og_url %}https://codeplusunity.ir/PortfolioPage/{{ cv.id }}{% endblock %}
+
+
+{% block content %}
+
+    <head xmlns="http://www.w3.org/1999/html">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    </head>
+
+    <main>
+        <div class="container mt-10">
+            <div class="lg:bg-white bg-inherit rounded-xl py-6 px-4 lg:h-[358px] h-auto w-auto lg:w-[1240px]">
+                <h2 class="font-IRSans-Medium text-black text-base lg:text-[28px]">{{ cv.title }}</h2>
+                <p class="lg:text-[24px] text-xs text-gray-500 lg:mt-6 lg:mb-7 my-4 lg:leading-normal leading-5">
+                    {{ cv.des }}</p>
+
+                <!-- ************************** -->
+                <!--            اسلایدر در دسکتاپ -->
+
+                <div x-data="{ openModal: false, activeImage: '{{ cv.image.url }}', currentIndex: 0, images: {{ images_list|safe }} }"
+                     class="hidden lg:inline justify-between items-center">
+
+                    <!-- دکمه باز کردن مدال -->
+                    <button @click="if ('{{ cv.url|default_if_none:'' }}' !== '') { window.location.href = '{{ cv.url }}'; } else { openModal = true; }"
+                            class="inline bg-BlueC-800 text-xs lg:text-lg rounded-lg lg:rounded-2xl w-20 lg:w-[186px] h-8 lg:h-[56px] lg:ml-28 ml-8 my-5">
+                        <a href="#" class="hover:transition-all delay-75 hover:scale-95 duration-150 text-white">مشاهده
+                            سایت</a>
+                    </button>
+
+                    <!-- مدال -->
+                    <div x-show="openModal" @click.away="openModal = false"
+                         class="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+                        <div class="p-5 w-[100%] h-[100%] relative flex flex-col items-center m-4">
+                            <!-- دکمه بستن -->
+                            <button @click="openModal = false"
+                                    class="absolute top-5 right-2 bg-gray-500 text-white hover:text-gray-700 rounded-2xl p-2 hover:bg-gray-600 transition z-20 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5"
+                                     stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                            </button>
+
+                            <!-- تصویر بزرگ دسکتاپ با دکمه‌های قبلی و بعدی -->
+                            <div class="relative flex justify-center items-start mb-4 overflow-y-auto">
+
+                                <!-- تصویر فعال -->
+                                <div class="overflow-y-auto m-4 pt-4 max-w-[1238px] max-h-[100%]">
+                                    <img :src="images[currentIndex]" alt="تصویر بزرگ"
+                                         class="w-[1238px] h-full object-cover rounded-lg">
+                                </div>
+
+                                <!-- دکمه قبلی -->
+                                <button @click="currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1"
+                                        class="absolute left-0 p-3 swiper-button-next">
+
+                                </button>
+
+                                <!-- دکمه بعدی -->
+                                <button @click="currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0"
+                                        class="absolute right-0 p-3 swiper-button-prev">
+                                </button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اسلاایدر موبایل  -->
+                {#  مقدار دهی عکس ها ////////////////////////#}
+                <div x-data="{ openModal: false, activeImageMobile: '', currentIndex: 0, imagesMobile: {{ listImageMobile|safe }} }"
+                     class="lg:hidden inline justify-between items-center">
+
+                    <!-- دکمه باز کردن مدال برای موبایل -->
+                    <button @click="if ('{{ cv.url|default_if_none:'' }}' !== '') { window.location.href = '{{ cv.url }}'; } else { openModal = true; }"
+                            class="inline bg-BlueC-800 text-xs rounded-lg w-20 h-8 ml-8 my-5">
+                        <a href="#" class="hover:transition-all delay-75 hover:scale-95 duration-150 text-white">مشاهده
+                            سایت</a>
+                    </button>
+
+                    <!-- مدال موبایل -->
+                    <div x-show="openModal" @click.away="openModal = false"
+                         class="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+                        <div class="bg-white p-3 w-[90%] h-[90%] relative flex flex-col items-center">
+                            <!-- دکمه بستن برای موبایل -->
+                            <button @click="openModal = false"
+                                    class="absolute top-3 right-2 bg-gray-500 text-white hover:text-gray-700 rounded-2xl p-1 z-20 hover:bg-gray-600 transition ">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5"
+                                     stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                            </button>
+
+
+                            <!-- تصویر بزرگ برای موبایل با اسکرول عمودی و اسلایدر -->
+                            <div class="relative flex justify-center items-start mb-4 w-full h-auto overflow-y-auto">
+
+                                <!-- تصویر فعال -->
+                                <img :src="imagesMobile[currentIndex]" alt="تصویر بزرگ موبایل"
+                                     class="max-w-full max-h-full w-auto h-auto object-cover rounded-lg">
+
+                            </div>
+                            <div class="relative flex justify-between items-center">
+                                <!-- دکمه قبلی -->
+                                <button @click="currentIndex = (currentIndex > 0) ? currentIndex - 1 : imagesMobile.length - 1"
+                                        class="absolute left-0 p-2 text-gray-500 rounded-full z-10">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke-width="1.5"
+                                         stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                                    </svg>
+                                </button>
+
+                                <!-- دکمه بعدی -->
+                                <button @click="currentIndex = (currentIndex < imagesMobile.length - 1) ? currentIndex + 1 : 0"
+                                        class="absolute right-0 p-2 text-gray-500 rounded-full z-10">
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke-width="1.5"
+                                         stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                                    </svg>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- ****************************************************** -->
+
+                <img src="{% static 'Pic/Star.png' %}" alt="" class="inline mb-5 lg:mb-10 lg:w-auto w-20">
+            </div>
+
+            <!-- Session 2 -->
+            <div class="lg:bg-white bg-inherit rounded-xl py-1 lg:py-6 lg:h-[497px] h-auto w-auto lg:w-[1240px] mt-0 lg:mt-6">
+                <div class="px-4">
+                    <h3 class="font-IRSans-Medium text-black text-base lg:text-[28px]">توضیحات پروژه </h3>
+                    <p class="lg:text-[24px] text-xs text-gray-500 mt-6 mb-10 lg:leading-normal leading-5">
+                        {{ cv.generalـdes }}
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 lg:grid-cols-4 justify-center items-center gap-x-3 gap-y-4 lg:gap-x-14 lg:gap-y-5 mx-4">
+
+                    <div class="flex flex-col justify-center items-center gap-2 lg:gap-y-4 lg:w-[211px] w-36 h-36 lg:h-[191px] bg-teal-200 p-8 rounded-lg">
+                        <img src="{% static 'Pic/icon/clockBold.png' %}" alt="" class="lg:w-12 w-8 h-8 lg:h-12">
+                        <div class="flex flex-col gap-y-3 items-center">
+                            <p class="font-IRSans-Bold text-sm lg:text-[22px]">مدت زمان</p>
+                            <p class="text-xs lg:text-[22px] text-gray-500">{{ cv.time }}</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col justify-center items-center gap-2 lg:gap-y-4 lg:w-[211px] w-36 h-36 lg:h-[191px] bg-teal-200 p-8 rounded-lg">
+                        <img src="{% static 'Pic/icon/brush.png' %}" alt="" class="lg:w-12 w-8 h-8 lg:h-12">
+                        <div class="flex flex-col gap-y-3 items-center">
+                            <p class="font-IRSans-Bold text-sm lg:text-[22px]">ابزارها</p>
+                            <p class="text-xs lg:text-[22px] text-gray-500">{{ cv.tools }}</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col justify-center items-center gap-2 lg:gap-y-4 lg:w-[211px] w-36 h-36 lg:h-[191px] bg-teal-200 p-8 rounded-lg">
+                        <img src="{% static 'Pic/icon/Lang.png' %}" alt="" class="lg:w-12 w-8 h-8 lg:h-12">
+                        <div class="flex flex-col gap-y-3 items-center">
+                            <p class="font-IRSans-Bold text-sm lg:text-[22px]">زبان‌برنامه‌نویسی</p>
+                            <p class="text-xs lg:text-[22px] text-gray-500">{{ cv.language }}</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col justify-center items-center gap-2 lg:gap-y-4 lg:w-[211px] w-36 h-36 lg:h-[191px] bg-teal-200 p-8 rounded-lg">
+                        <img src="{% static 'Pic/icon/page.png' %}" alt="" class="lg:w-12 w-8 h-8 lg:h-12">
+                        <div class="flex flex-col gap-y-3 items-center">
+                            <p class="font-IRSans-Bold text-sm lg:text-[22px]">تعداد صفحات</p>
+                            <p class="text-xs lg:text-[22px] text-gray-500">{{ cv.pagecount }}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Session 3 -->
+            <div class="py-6 mt-10 lg:w-[1240px] w-auto">
+                <div>
+                    <h3 class="font-IRSans-Medium text-black text-base lg:text-[28px]">نمونه کار های دیگر</h3>
+                    <p class="lg:text-[24px] text-xs text-gray-500 my-6 lg:leading-normal leading-5">در این بخش می
+                        توانید نمونه کار های بیشتر ما را مشاهده کنید</p>
+                </div>
+
+                <div class="lg:mt-16 mt-8">
+                    <div class="lg:grid lg:grid-cols-2 grid-cols-1 gap-4 hidden ">
+                        <!-- کارت‌ها برای حالت دسکتاپ -->
+                        {% for cv in portfolios %}
+                            <div class="relative flex justify-between gap-3 bg-white p-3 rounded-lg my-4 lg:h-[166px] w-[608px] shadow-md">
+                                <img src="{{ cv.image.url }}" alt="{{ cv.title }}"
+                                     class="rounded-lg w-[151px] h-[106px] object-contain pr-2 m-auto">
+                                <div class="flex-grow overflow-hidden mt-6">
+                                    <h5 class="font-IRSans-Bold lg:text-sm text-xl">{{ cv.title }}</h5>
+                                    <p class="font-IRSans-Light lg:text-xs text-sm text-gray-700 overflow-hidden truncate line-clamp-2 my-4">
+                                        {{ cv.des }}
+                                    </p>
+                                </div>
+                                <div class="absolute bottom-2 left-2">
+                                    <button onclick="window.location.href='{% url 'PortfolioPage' cv.id %}'"
+                                            class="lg:text-[10px] text-sm text-gray-700 bg-BlueC-300 hover:bg-BlueC-400 lg:rounded-xl rounded-xl w-24 h-9">
+                                        جزییات بیشتر
+                                    </button>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <p class="text-gray-700">هیچ نمونه کاری یافت نشد.</p>
+                        {% endfor %}
+                    </div>
+
+                    <!-- اسلایدر برای حالت موبایل -->
+                    <div class="swiper-container lg:hidden block overflow-hidden">
+                        <div class="swiper-wrapper w-full">
+
+                            <!-- کارت 1 -->
+                            {% for cv in portfolios %}
+                                <div class="swiper-slide relative flex flex-col justify-center items-center gap-3 bg-white p-3 rounded-lg my-4 w-full max-w-[286px] h-[371px] shadow-md">
+                                    <img src="{{ cv.image.url }}" alt=""
+                                         class="rounded-lg w-[205px] h-[131px] object-contain pr-2 m-auto">
+                                    <div class="flex flex-col overflow-hidden justify-center items-center mt-6">
+                                        <h5 class="font-IRSans-Bold text-[22px]">{{ cv.titel }}</h5>
+                                        <p class="font-IRSans-Light text-sm text-gray-700 text-center line-clamp-3 my-4">
+                                            {{ cv.des }}
+                                        </p>
+                                        <button onclick="window.location.href='{% url 'PortfolioPage' cv.id %}'"
+                                                class="lg:text-[10px] text-sm text-gray-700 bg-BlueC-300 hover:bg-BlueC-400 lg:rounded-xl rounded-xl w-24 h-9">
+                                            جزییات بیشتر
+                                        </button>
+                                    </div>
+
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+                        <!-- دات‌های pagination زیر کادرها -->
+                        <div class="text-center relative bottom-0 mt-5">
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    dynamicBullets: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+
+        </script>
+
+    </main>
+
+    <!-- Include Footer -->
+    {% include 'baseFooter.html' %}
+{% endblock %}

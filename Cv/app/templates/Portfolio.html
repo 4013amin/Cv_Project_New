@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+<!--Seo-->
+
+{% block title %}نمونه کارها{% endblock %}
+{% block description %}در این صفحه، نمونه کارهای منتخب ما را مشاهده کنید. این نمونه کارها شامل پروژه‌های محبوب‌ترین،
+    جدیدترین و قدیمی‌ترین ما هستند.{% endblock %}
+{% block keywords %}طراحی سایت رایگان, نمونه کارها, طراحی وب, پروژه‌های ما, محبوب‌ترین پروژه‌ها{% endblock %}
+{% block author %}CodePlus Team{% endblock %}
+{% block og_title %}نمونه کارهای کد پلاس{% endblock %}
+{% block og_description %}در این صفحه، نمونه کارهای منتخب ما را مشاهده کنید. این نمونه کارها شامل پروژه‌های محبوب‌ترین،
+    جدیدترین و قدیمی‌ترین ما هستند.{% endblock %}
+{% block og_image %}{% static 'Pic/Logo/PortfolioImage.svg' %}{% endblock %}
+{% block og_url %}https://codeplusunity.ir/Portfolio/{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container mt-10 gap-x-1">
+            <div class="flex justify-between">
+                <!-- Button Tabs -->
+                <div class="contentBtns lg:mb-7 mb-3 flex lg:gap-5 gap-1">
+                    <button id="filter-popular"
+                            class="showContent lg:text-lg text-[10px] text-gray-800 bg-BlueC-300 rounded-full lg:py-4 py-2 px-2 transition-all delay-75 ease-in"
+                            onclick="filterPortfolio('popular')">
+                        محبوب ترین
+                    </button>
+                    <button id="filter-newest"
+                            class="showContent lg:text-lg text-[10px] text-gray-700 rounded-full lg:py-4 py-2 px-2 transition-all delay-75 ease-in"
+                            onclick="filterPortfolio('newest')">
+                        جدیدترین
+                    </button>
+                    <button id="filter-oldest"
+                            class="showContent lg:text-lg text-[10px] text-gray-700 rounded-full lg:py-4 py-2 px-2 transition-all delay-75 ease-in"
+                            onclick="filterPortfolio('oldest')">
+                        قدیمی ترین
+                    </button>
+                </div>
+
+                <script>
+                    function filterPortfolio(filter) {
+                        const url = new URL(window.location.href);
+                        url.searchParams.set('filter', filter);
+                        window.location.href = url.toString();
+                    }
+
+                    // Optional: Highlight the currently active filter
+                    function updateActiveFilter() {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const currentFilter = urlParams.get('filter') || 'newest';
+                        document.querySelectorAll('.contentBtns button').forEach(button => {
+                            if (button.id === `filter-${currentFilter}`) {
+                                button.classList.add('bg-BlueC-300', 'text-gray-800');
+                                button.classList.remove('text-gray-700');
+                            } else {
+                                button.classList.add('text-gray-700');
+                                button.classList.remove('bg-BlueC-300', 'text-gray-800');
+                            }
+                        });
+                    }
+
+                    // Run on page load to highlight the active filter
+                    document.addEventListener('DOMContentLoaded', updateActiveFilter);
+                </script>
+            </div>
+
+            <div class="flex justify-center md:items-start items-center md:flex-row flex-col gap-6 mt-7">
+                <div class="Content animate-search">
+                    <!-- right -->
+                    <div class="grid lg:grid-cols-1 md:grid-cols-2 grid-cols-1 gap-5 lg:w-[1240px] md:w-[600px] w-[360px]">
+                        {% for work in worksamples %}
+                            <div class="flex lg:flex-row flex-col justify-center items-center gap-5 bg-white lg:p-3 p-2 rounded-lg lg:items-start my-4">
+                                <img src="{{ work.image.url }}" alt=""
+                                     class="rounded-lg lg:w-[290px] w-[223px] lg:h-[185px] h-[143px] lg:my-0 my-4">
+                                <div class="flex flex-col lg:justify-between justify-center lg:items-end items-center gap-y-8">
+                                    <div class="flex flex-col lg:justify-between lg:items-start justify-center items-center h-auto w-[340px] md:w-[900px] overflow-hidden truncate line-clamp-2 gap-5">
+                                        <h5 class="font-IRSans-Bold lg:text-2xl text-xl">{{ work.title }}</h5>
+                                        <p class="font-IRSans-Light line-clamp-2 lg:text-base text-sm">{{ work.des }}</p>
+                                    </div>
+                                    <div class="flex lg:justify-end lg:mb-0 mb-2">
+                                        <a href="{% url 'PortfolioPage' work.id %}"
+                                           class="lg:text-base text-sm text-gray-600 hover:text-gray-800 bg-BlueC-300 lg:rounded-3xl rounded-xl lg:py-3 py-2 px-4">
+                                            جزییات بیشتر
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <p>هیچ داده‌ای برای نمایش وجود ندارد.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Include Footer -->
+    {% include 'baseFooter.html' %}
+{% endblock %}

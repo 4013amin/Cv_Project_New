@@ -1,0 +1,120 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پایه فوتر</title>
+    <!-- لینک به فایل‌های CSS -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body class="bg-BlueC-100">
+
+<!-- سایر محتوای صفحه -->
+<main>
+    <!-- محتوای اصلی صفحه در اینجا قرار می‌گیرد -->
+    {% block content %}
+    {% endblock %}
+</main>
+
+<!-- Footer -->
+<footer class="mt-24 flex flex-col justify-center items-center w-full">
+    <!-- White Session -->
+    <div class="flex justify-between items-center lg:px-5 px-3 bg-white lg:w-[850px] w-[300px] h-20 rounded-xl -mb-10 z-20">
+        <div>
+            <p class="lg:text-lg text-xs">منتظر تماس گرم شما هستیم </p>
+            <span class="font-IRSans-Light lg:text-sm text-[10px]">پاسخگویی از ۷ صبح تا ۲۲ شب</span>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+            <p class="font-Rokh-Bold lg:text-2xl text-sm m-2">09215945265</p>
+            <img src="{% static 'Pic/Mobile.png' %}" alt="Mobile Icon" class="lg:w-[53px] w-6 h-6 lg:h-[53px]">
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div class="bg-BlueC-100 h-auto w-full flex lg:flex-row flex-col lg:justify-around lg:items-start justify-center items-center rounded-3xl -mb-10 z-10">
+        <div class="mt-16 flex flex-col lg:items-start items-center">
+            <!-- Logo -->
+            <img src="{% static 'Pic/آبی افقی.svg' %}" alt="logo" class="lg:h-[49px] h-10 w-40 lg:w-[230px]">
+            <p class="font-IRSans-Light text-xs w-96 text-justify leading-6 mt-6 p-4"> در کد پلاس، ما به ایده‌های شما
+                جان می‌بخشیم و آن‌ها را به تجربه‌های دیجیتالی بی‌نظیر تبدیل می‌کنیم. تیم ما، متشکل از برنامه‌نویسان،
+                طراحان و متخصصین سئو، با دقت و خلاقیت، به طراحی سایت‌های پویا، اپلیکیشن‌های کاربرپسند، رابط‌های کاربری
+                زیبا و استراتژی‌های سئو قوی می‌پردازد. مأموریت ما این است که با ترکیب هنر و تکنولوژی، حضوری قدرتمند برای
+                کسب‌وکار شما در دنیای آنلاین ایجاد کنیم. به کد پلاس بپیوندید و اجازه دهید با هم، آینده‌ی دیجیتال شما را
+                بسازیم.
+            </p>
+        </div>
+        <!-- Left Side -->
+        <div class="lg:mt-28 my-10 grid sm:grid-cols-3 grid-cols-2 lg:gap-28 gap-x-16 gap-y-7">
+            <!-- Access -->
+            <div class="flex flex-col gap-y-4 mt-6">
+                <h5>دسترسی سریع</h5>
+                <div class="flex flex-col font-IRSans-Light mt-3 gap-y-4 text-xs">
+                    <a href="{% url 'index' %}">صفحه اصلی </a>
+                    <a href="{% url 'Portfolio' %}">نمونه کارها</a>
+                    <a href="{% url 'weblogs' %}">مقالات</a>
+                    <a href="{% url 'contactUs' %}">تماس باما</a>
+                    <a href="{% url 'contactUs' %}">مشاوره رایگان</a>
+                </div>
+            </div>
+
+            <!-- Access -->
+            <div class="flex flex-col gap-y-4 mt-6">
+                <h5>دسترسی سریع</h5>
+                <div class="flex flex-col font-IRSans-Light mt-3 gap-y-4 text-xs">
+                    <a href="{% url 'index' %}">صفحه اصلی </a>
+                    <a href="{% url 'Portfolio' %}">نمونه کارها</a>
+                    <a href="{% url 'weblogs' %}">مقالات</a>
+                    <a href="{% url 'contactUs' %}">تماس باما</a>
+                    <a href="{% url 'contactUs' %}">مشاوره رایگان</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-y-4 mt-6">
+                <h5>راه های ارتباطی</h5>
+                <div class="flex flex-col font-IRSans-Light gap-y-4 text-xs mt-3">
+                    <a href="tel:09215945265" class="flex items-center gap-2 font-IRSans-Light text-xs">
+                        <img src="{% static 'Pic/iconsfooter/call-calling.svg' %}" alt="Call Icon" class="w-4 h-4">
+                        09215945265
+                    </a>
+                    <a href="https://t.me/+6iKn5NsWLjoxZWE0" class="flex items-center gap-2 font-IRSans-Light text-xs">
+                        <img src="{% static 'Pic/iconsfooter/newtel.svg' %}" alt="Telegram Icon" class="w-4 h-4">
+                        codeplusunity
+                    </a>
+
+                    <a href="https://wa.me/09215945265" class="flex items-center gap-2 font-IRSans-Light text-xs">
+                        <img src="{% static 'Pic/whatsapp.svg' %}" alt="WhatsApp Icon" class="w-4 h-4">
+                        09214525890
+                    </a>
+
+
+                    <a href="mailto:codeplus.unity@gmail.com" class="flex items-center gap-2 font-IRSans-Light text-xs">
+                        <img src="{% static 'Pic/sms.svg' %}" alt="SMS Icon" class="w-4 h-4">
+                        codeplus.unity@gmail.com
+                    </a>
+
+                    <a href="https://www.instagram.com/codeplus.unity/"
+                       class="flex items-center gap-2 font-IRSans-Light text-xs">
+                        <img src="{% static 'Pic/iconsfooter/instagram-grey-outline-22754.svg' %}" alt="Instagram Icon"
+                             class="w-4 h-4">
+                        codeplus.unity
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="bg-BlueC-800 h-20 z-0 flex lg:justify-start items-end justify-center mt-3">
+    <p class="font-IRSans-Light text-sm text-white pb-2 px-20">© تمام حقوق codeplus.com محفوظ است</p>
+</div>
+
+
+<!-- لینک به فایل‌های JavaScript -->
+<script src="{% static 'Script/home.js' %}"></script>
+<script src="{% static 'Script/contact.js' %}"></script>
+<script src="{% static 'Script/filter.js' %}"></script>
+
+</body>
+</html>
