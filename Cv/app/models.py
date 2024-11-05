@@ -1,5 +1,5 @@
 from django.db import models
-from jalali_date import date2jalali, datetime2jalali
+# from jalali_date import date2jalali, datetime2jalali
 
 
 class OtherExample(models.Model):
@@ -93,8 +93,8 @@ class blogs(models.Model):
     popularity = models.IntegerField(default=0, null=True)  # فیلد محبوبیت
     category = models.ForeignKey(CategoryWeblog, on_delete=models.CASCADE, related_name='blogs', null=True, blank=True)
 
-    def get_jalaliData(self):
-        return date2jalali(self.created_at)
+    # def get_jalaliData(self):
+    #     return date2jalali(self.created_at)
 
     def __str__(self):
         return self.title
