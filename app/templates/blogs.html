@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+<!--SEO-->
+{% block title %}وبلاگ | شرکت CodePlus{% endblock %}
+
+{% block description %}صفحه وبلاگ شرکت CodePlus. در اینجا می‌توانید آخرین اخبار، مقالات و به‌روزرسانی‌های مربوط به صنعت
+    و خدمات ما را بخوانید. با فیلتر کردن محتوا، به راحتی می‌توانید محبوب‌ترین، جدیدترین و قدیمی‌ترین مطالب را پیدا
+    کنید.{% endblock %}
+
+{% block keywords %}وبلاگ, مقالات, اخبار, شرکت, شرکت طراحی سایت رایگان, سایت رایگان CodePlus, مطالب جدید, مطالب محبوب,
+    {{ blog.title }}{% endblock %}
+
+{% block author %}CodePlus Team{% endblock %}
+
+{% block og_title %}وبلاگ | CodePlus{% endblock %}
+
+{% block og_description %}در وبلاگ CodePlus آخرین اخبار و مقالات مفید را در مورد خدمات و صنعت ما پیدا کنید. از طریق
+    فیلترهای مختلف مطالب، بهترین و جدیدترین محتوا را جستجو کنید.{% endblock %}
+
+{% block og_image %}{% static 'Pic/Logo/CP.svg' %}{% endblock %}
+
+{% block og_url %}https://codeplusunity.ir/weblogs{% endblock %}
+
+
+{% block content %}
+
+    <main>
+        <div class="container mt-10 gap-x-1">
+            <div class="flex justify-between">
+                <!-- Button Tabs -->
+                <div class="contentBtns lg:mb-7 mb-3 flex lg:gap-5 gap-1">
+                    <button id="filter-popular"
+                            class="showContent lg:text-lg text-[10px] text-gray-800 bg-BlueC-300 rounded-full lg:py-4 py-2 px-2 transition-all delay-75 ease-in"
+                            onclick="filterBlogs('popular')">
+                        محبوب ترین
+                    </button>
+                    <button id="filter-latest"
+                            class="showContent lg:text-lg text-[10px] text-gray-700 rounded-full lg:py-4 py-2 px-2 transition-all delay-75 ease-in"
+                            onclick="filterBlogs('latest')">
+                        جدیدترین
+                    </button>
+                    <button id="filter-oldest"
+                            class="showContent lg:text-lg text-[10px] text-gray-700 rounded-full lg:py-4 py-2 px-2 transition-all delay-75 ease-in"
+                            onclick="filterBlogs('oldest')">
+                        قدیمی ترین
+                    </button>
+                </div>
+                <!-- Search -->
+                <div class="flex lg:hidden justify-center items-center relative rounded-xl left-0">
+                    <input type="search" name="search" placeholder="ورود واژه کلیدی ..."
+                           class="searchInput text-[10px] rounded-lg py-4 pr-3 pl-9 w-0"
+                           value="{{ search_query }}">
+                    <img src="{% static 'Pic/icon/search.png' %}" alt="" class="searchBtn w-6 h-6 left-2 absolute">
+                </div>
+
+                <script>
+                    function filterBlogs(filter) {
+                        const url = new URL(window.location.href);
+                        url.searchParams.set('filter', filter);
+                        window.location.href = url.toString();
+                    }
+
+                    // Optional: Highlight the currently active filter
+                    function updateActiveFilter() {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const currentFilter = urlParams.get('filter') || 'popular';
+                        document.querySelectorAll('.contentBtns button').forEach(button => {
+                            if (button.id === `filter-${currentFilter}`) {
+                                button.classList.add('bg-BlueC-300', 'text-gray-800');
+                                button.classList.remove('text-gray-700');
+                            } else {
+                                button.classList.add('text-gray-700');
+                                button.classList.remove('bg-BlueC-300', 'text-gray-800');
+                            }
+                        });
+                    }
+
+                    // Run on page load to highlight the active filter
+                    document.addEventListener('DOMContentLoaded', updateActiveFilter);
+                </script>
+            </div>
+
+
+        </div>
+
+        <div class="contentBox flex justify-center md:items-start items-center md:flex-row flex-col gap-6 mt-5 ">
+            <!-- right -->
+            <div class="Content lg:w-[712px] w-[360px] animate-search">
+                {% for blog in weblogs %}
+                    <div class="flex gap-5 bg-white lg:p-3 p-2 rounded-lg items-center my-4">
+                        <img src="{{ blog.image.url }}" alt=""
+                             class="rounded-lg lg:w-[160px] w-[70px] lg:h-[129px] h-[70px]">
+                        <div class="lg:w-[455px] w-[260px] flex flex-col justify-between gap-y-2">
+                            <div class="flex flex-col">
+                                <h5 class="font-IRSans-Medium lg:text-lg text-xs"><a
+                                        href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a></h5>
+                                <div class="flex justify-start items-center lg:gap-2 gap-1 mt-1 lg:mb-2 mb-1">
+                                    <img src="{% static 'Pic/calendar.png' %}" alt="" class="lg:w-4 w-3 lg:h-4 h-3">
+                                    <p class="font-IRSans-Light text-zinc-400 lg:text-base text-[10px]">
+                                        {{ blog.get_jalaliData }}
+                                    </p>
+
+                                </div>
+                                <div class="w-full h-auto font-IRSans-Light lg:text-sm text-[10px] overflow-hidden truncate line-clamp-3">
+                                    {{ blog.content|truncatechars:150 | safe }}
+                                </div>
+                            </div>
+
+                            {#                            <a href="{% url 'blog_detail' blog.id %}" class="flex justify-end lg:mt-2 mt-1">#}
+                            {#                                <img src="{% static 'Pic/import.png' %}" alt="" class="lg:w-4 w-2 lg:h-4 h-2">#}
+                            {#                            </a>#}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Left -->
+            <div class="flex md:flex-col flex-col-reverse gap-5 lg:w-[467px] w-[360px] mt-6">
+
+                <!-- Search -->
+                <div class="hidden lg:flex justify-start items-center relative w-[467px] bg-white rounded-xl py-5 px-3">
+                    <form action="{% url 'weblogs' %}" method="get" class="w-full flex items-center">
+                        <input type="search" name="search" placeholder="ورود واژه کلیدی ..."
+                               class="border-0 ring-1 ring-gray-300 focus:outline-none focus:ring-1 focus:ring-BlueC-800 transition ease-in-out duration-150 text-sm rounded-lg py-4 pr-3 pl-9 w-full [&::-webkit-search-cancel-button]:hidden"
+                               value="{{ search_query }}">
+                        <img src="{% static 'Pic/icon/search.png' %}" alt="" class="w-6 h-6 absolute left-9">
+                    </form>
+                </div>
+
+                <!-- Category -->
+                <div class="bg-white rounded-xl p-3 lg:w-[467px] w-[360px]">
+                    <h5 class="lg:text-2xl text-base">دسته بندی</h5>
+                    <div class="flex flex-col font-IRSans-Light gap-y-6 lg:text-lg text-xs my-7 text-zinc-400">
+                        {% for category in categories %}
+                            <span class="hover:border-r-2 transition-all border-r-BlueC-800"><a
+                                    href="{% url 'weblogs' %}?category={{ category.slug }}"
+                                    class="hover:scale-110 duration-75 hover:text-xl">{{ category.name }}</a></span>
+                        {% empty %}
+                            <p>دسته بندی وجود ندارد.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- جدیدترین نوشته‌ها -->
+                <div class="flex flex-col gap-5 bg-white rounded-xl p-3 lg:w-[467px] w-[360px]">
+                    <h5 class="lg:text-2xl text-base">جدیدترین نوشته‌ها</h5>
+                    {% for blog in new_blogs %}
+                        <div class="relative mb-4">
+            <span class="hover:border-r-2 transition-all border-r-BlueC-800"><a href="{% url 'blog_detail' blog.id %}"
+                                                                                class="hover:scale-110 duration-75 hover:text-xl">{{ blog.title }}</a></span>
+                            <div class="lg:text-sm text-xs text-zinc-400 flex flex-col justify-center items-end mt-4 mb-2 font-IRSans-Light">
+                                <span>{{ blog.get_jalaliData }}</span>
+                            </div>
+                            <!-- خط افقی با متن -->
+                            <div class="relative">
+                                <hr class="border-t border-gray-300">
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p>هیچ نوشته جدیدی وجود ندارد.</p>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+        </div>
+
+        <!-- Slider -->
+        <div class="flex justify-center items-center text-lg md:text-xl gap-x-1 mt-24 p-4">
+            <a href="#" class="cursor-pointer hover:bg-BlueC-100 px-4 py-2 rounded-xl"><</a>
+            <a href="#" class="cursor-pointer hover:bg-BlueC-100 px-4 py-2 rounded-xl">1</a>
+            <a href="#" class="bg-BlueC-800/40 text-white rounded-xl cursor-pointer hover:bg-BlueC-100 px-4 py-2">2</a>
+            <a href="#" class="cursor-pointer hover:bg-BlueC-100 px-4 py-2 rounded-xl">3</a>
+            <a href="#" class="cursor-pointer hover:bg-BlueC-100 px-4 py-2 rounded-xl">4</a>
+            <a href="#" class="cursor-pointer hover:bg-BlueC-100 px-4 py-2 rounded-xl">></a>
+        </div>
+    </main>
+
+    <!-- Include Footer -->
+    {% include 'baseFooter.html' %}
+
+{% endblock %}
