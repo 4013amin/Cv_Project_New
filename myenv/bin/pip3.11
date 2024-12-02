@@ -1,4 +1,4 @@
-#!/home/delta/PycharmProjects/Cv_proejct_New/Cv/myenv/bin/python3
+#!/home/delta/PycharmProjects/Cv_proejct_New/cvAll/myenv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

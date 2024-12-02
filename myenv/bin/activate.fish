@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/delta/PycharmProjects/Cv_proejct_New/Cv/myenv"
+set -gx VIRTUAL_ENV "/home/delta/PycharmProjects/Cv_proejct_New/cvAll/myenv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
